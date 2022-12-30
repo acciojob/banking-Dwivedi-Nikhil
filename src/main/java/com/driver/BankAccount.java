@@ -8,6 +8,9 @@ public class BankAccount {
 
     public BankAccount(String name, double balance, double minBalance) {
 
+        this.name=name;
+        this.balance=balance;
+        this.minBalance=minBalance;
     }
 
     public String generateAccountNumber(int digits, int sum) throws Exception{
@@ -20,6 +23,7 @@ public class BankAccount {
 
     public void deposit(double amount) {
         //add amount to balance
+        balance=balance + amount;
 
     }
 
