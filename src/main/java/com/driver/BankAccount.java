@@ -5,68 +5,61 @@ public class BankAccount {
     private String name;
     private double balance;
     private double minBalance;
-    private String accNo;
-
-
 
     public BankAccount(String name, double balance, double minBalance) {
-        this.balance=balance;
+
         this.name=name;
+        this.balance=balance;
         this.minBalance=minBalance;
     }
 
-    public void createPassword(String str, int digit,int sum){
-        if(str.length()>=digit){
-            int count=0;   //checking its length
-            for(int i=0;i<str.length();i++) count+=(str.charAt(i)-'a');
-            if(count==sum) this.accNo=str;
-            return;
-        }
-        for(int i=0;i<=9;i++) createPassword(str+Integer.toString(i),digit,sum);
-
-        return;
-    }
     public String generateAccountNumber(int digits, int sum) throws Exception{
         //Each digit of an account number can lie between 0 and 9 (both inclusive)
         //Generate account number having given number of 'digits' such that the sum of digits is equal to 'sum'
         //If it is not possible, throw "Account Number can not be generated" exception
-        createPassword("",digits,sum);
-        return accNo;
+
+        return null;
     }
 
     public void deposit(double amount) {
         //add amount to balance
-        this.balance+=amount;
+        balance=balance + amount;
 
     }
 
     public void withdraw(double amount) throws Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
-        this.balance-=amount;
+        balance -= amount;
+        if(balance < minBalance ){
+            throw new Exception("Insufficient Balance");
+        }
+
     }
 
-    public String getName() {
-        return name;
-    }
+}//class
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public double getBalance() {
-        return balance;
-    }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 
-    public void setMinBalance(double minBalance) {
-        this.minBalance = minBalance;
-    }
-
-    public void setAccNo(String accNo) {
-        this.accNo = accNo;
-    }
-
-}
+//    public static void method() throws FileNotFoundException {
+//
+//        FileReader file = new FileReader("C:\\Users\\Anurati\\Desktop\\abc.txt");
+//        BufferedReader fileInput = new BufferedReader(file);
+//
+//
+//        throw new FileNotFoundException();
+//
+//    }
+//    //main method
+//    public static void main(String args[]){
+//        try
+//        {
+//            method();
+//        }
+//        catch (FileNotFoundException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        System.out.println("rest of the code...");
+//    }
+//}
